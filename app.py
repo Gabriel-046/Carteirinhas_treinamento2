@@ -17,7 +17,7 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # Exibir logo
 try:
-    logo = Image.open("logo.png")  # Renomeie sua imagem para "logo.png"
+    logo = Image.open("logo.webp")  # Renomeie sua imagem para "logo.png"
     st.image(logo, width=200)
 except:
     st.warning("Logo não encontrada ou nome inválido. Renomeie para 'logo.png' e coloque na mesma pasta do app.")
@@ -92,5 +92,6 @@ if st.button("Consultar"):
             df_display = filtro[[col_trein]].copy()
             df_display[col_trein] = df_display[col_trein].astype(str)
             st.dataframe(df_display.rename(columns={col_trein: "Treinamento"}))
+
 
 
