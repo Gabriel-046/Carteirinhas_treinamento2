@@ -17,7 +17,7 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # Exibir logo
 try:
-    logo = Image.open("logo.webp")  # Certifique-se de que o arquivo está no diretório com esse nome
+    logo = Image.open("logo.webp")  # Renomeie sua imagem para "logo.png"
     st.image(logo, width=200)
 except:
     st.warning("Logo não encontrada ou nome inválido. Renomeie para 'logo.png' e coloque na mesma pasta do app.")
@@ -73,7 +73,11 @@ if st.button("Consultar"):
 
         # Filtrar dados
         filtro = df.loc[(df[col_cod].astype(str) == str(re_input)) & (df[col_adm] == adm_date)]
-        filtro = filtro.loc[filtro[col_trilha].isin(trilhas_desejadas)]
+
+        if col_trilha in df.columns:
+            filtro = filtro.loc[filtro[col_trilha].isin(trilhas_desejadas)]
+        else:
+            st.warning("Coluna 'TRILHA DE TREINAMENTO' não encontrada na planilha. Pulando filtro de trilhas.")
 
         if filtro.empty:
             st.warning("Nenhum registro encontrado para os critérios informados.")
