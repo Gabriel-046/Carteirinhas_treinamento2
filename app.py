@@ -48,7 +48,7 @@ col_unidade = "FILIAL_NOME"
 col_trilha = "TRILHA DE TREINAMENTO"
 
 trilhas_desejadas = [
-    "TRILHA COMPLIANCE",
+    "TRILHA COMPLIANCE ",
     "TRILHA DA MANUTENÇÃO",
     "TRILHA SEGURANÇA DO TRABALHO",
     "TRILHA SGI",
@@ -92,4 +92,5 @@ if st.button("Consultar"):
             df_display = filtro[[col_trein]].copy()
             df_display[col_trein] = df_display[col_trein].astype(str)
             st.dataframe(df_display.rename(columns={col_trein: "Treinamento"}))
+
 
