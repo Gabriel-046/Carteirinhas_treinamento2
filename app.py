@@ -92,4 +92,4 @@ if st.button("Consultar"):
             df_display = filtro[[col_trein]].copy()
             df_display[col_trein] = df_display[col_trein].astype(str)
             st.dataframe(df_display.rename(columns={col_trein: "Treinamento"}))
-``
+
