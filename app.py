@@ -17,7 +17,7 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # Exibir logo
 try:
-    logo = Image.open("logo.webp")  # Renomeie sua imagem para "logo.png"
+    logo = Image.open("logo.png")  # Renomeie sua imagem para "logo.png"
     st.image(logo, width=200)
 except:
     st.warning("Logo não encontrada ou nome inválido. Renomeie para 'logo.png' e coloque na mesma pasta do app.")
@@ -33,6 +33,7 @@ Formato da data: **DD/MM/AAAA** (ex: 15/03/2022)
 @st.cache_data
 def carregar_dados():
     df = pd.read_excel("Treinamentos Normativos.xlsx", sheet_name="BASE", engine="openpyxl")
+    df.columns = df.columns.str.strip()  # Limpa espaços extras nos nomes das colunas
     df["DATA_ADMISSAO"] = pd.to_datetime(df["DATA_ADMISSAO"], errors='coerce').dt.date
     return df
 
@@ -91,3 +92,4 @@ if st.button("Consultar"):
             df_display = filtro[[col_trein]].copy()
             df_display[col_trein] = df_display[col_trein].astype(str)
             st.dataframe(df_display.rename(columns={col_trein: "Treinamento"}))
+``
