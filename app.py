@@ -16,7 +16,7 @@ hide_streamlit_style = """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # Exibir logo
-logo = Image.open("logo.png")  # Renomeie sua imagem para "logo.png" e coloque na mesma pasta
+logo = Image.open("logo.webp")  # Renomeie sua imagem para "logo.png" e coloque na mesma pasta
 st.image(logo, width=200)
 
 st.title("Carteirinha Digital de Treinamento")
@@ -121,3 +121,4 @@ if st.button("Consultar"):
             df_display = filtro[[col_trein]].copy()
             df_display[col_trein] = df_display[col_trein].astype(str)
             st.dataframe(df_display.rename(columns={col_trein: "Treinamento"}))
+
